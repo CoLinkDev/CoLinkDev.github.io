@@ -1,0 +1,118 @@
+:root {
+  color: #121514;
+  background: #f7f7f5;
+  font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+}
+
+* { box-sizing: border-box; }
+
+body { margin: 0; min-width: 320px; }
+
+main {
+  display: grid;
+  min-height: 100svh;
+  padding: 28px;
+}
+
+.entry {
+  position: relative;
+  display: grid;
+  min-height: calc(100svh - 56px);
+  padding: clamp(28px, 6vw, 80px);
+  overflow: hidden;
+  border: 1px solid #e1e3df;
+  border-radius: 20px;
+  background:
+    radial-gradient(circle at 79% 28%, rgb(87 207 137 / 12%), transparent 24rem),
+    linear-gradient(135deg, #fbfbfa 0%, #f1f3ef 100%);
+}
+
+.entry::before {
+  position: absolute;
+  right: clamp(-90px, -5vw, -30px);
+  bottom: clamp(-110px, -7vw, -50px);
+  width: min(45vw, 620px);
+  aspect-ratio: 1;
+  border: 1px solid rgb(18 21 20 / 8%);
+  border-radius: 50%;
+  content: "";
+}
+
+.brand {
+  z-index: 1;
+  display: inline-flex;
+  align-self: start;
+  align-items: center;
+  gap: 9px;
+  width: fit-content;
+  color: inherit;
+  font-size: 16px;
+  font-weight: 650;
+  letter-spacing: -0.04em;
+  text-decoration: none;
+}
+
+.mark { width: 27px; height: 27px; }
+.mark path { fill: currentColor; }
+.mark circle { fill: #26bc75; }
+
+.content {
+  z-index: 1;
+  align-self: center;
+  max-width: 640px;
+  margin: clamp(74px, 15vh, 150px) 0;
+}
+
+.eyebrow {
+  margin: 0 0 18px;
+  color: #627069;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.15em;
+}
+
+h1 {
+  margin: 0;
+  font-size: clamp(58px, 10vw, 120px);
+  font-weight: 650;
+  letter-spacing: -0.075em;
+  line-height: 0.9;
+}
+
+.summary {
+  max-width: 410px;
+  margin: 28px 0 34px;
+  color: #4e5853;
+  font-size: clamp(17px, 2vw, 21px);
+  letter-spacing: -0.025em;
+  line-height: 1.45;
+}
+
+.protocol-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  padding: 13px 16px 13px 18px;
+  border: 1px solid #1b211e;
+  border-radius: 999px;
+  background: #1b211e;
+  color: #fff;
+  font-size: 14px;
+  font-weight: 600;
+  text-decoration: none;
+  transition: background 160ms ease, transform 160ms ease;
+}
+
+.protocol-link:hover { background: #35423b; transform: translateY(-2px); }
+.protocol-link:focus-visible, .brand:focus-visible { outline: 3px solid #75d7a1; outline-offset: 4px; }
+.protocol-link svg { width: 18px; height: 18px; fill: none; stroke: currentColor; stroke-linecap: round; stroke-linejoin: round; stroke-width: 1.7; }
+
+@media (max-width: 600px) {
+  main { padding: 12px; }
+  .entry { min-height: calc(100svh - 24px); border-radius: 14px; }
+  .content { margin: 0; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .protocol-link { transition: none; }
+}
