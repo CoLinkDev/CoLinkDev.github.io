@@ -23,7 +23,7 @@ main {
   border: 1px solid #e1e3df;
   border-radius: 20px;
   background:
-    radial-gradient(circle at 79% 28%, rgb(87 207 137 / 12%), transparent 24rem),
+    radial-gradient(circle at 83% 75%, rgb(87 207 137 / 12%), transparent 24rem),
     linear-gradient(135deg, #fbfbfa 0%, #f1f3ef 100%);
 }
 
@@ -43,24 +43,26 @@ main {
   display: inline-flex;
   align-self: start;
   align-items: center;
-  gap: 9px;
+  gap: 13px;
   width: fit-content;
   color: inherit;
-  font-size: 16px;
+  font-size: 27px;
   font-weight: 650;
-  letter-spacing: -0.04em;
+  letter-spacing: 0;
   text-decoration: none;
 }
 
 .mark { width: 27px; height: 27px; }
 .mark path { fill: currentColor; }
 .mark circle { fill: #26bc75; }
+.brand-label, h1 { font-family: "Google Sans", sans-serif; }
 
 .content {
   z-index: 1;
   align-self: center;
   max-width: 640px;
   margin: clamp(74px, 15vh, 150px) 0;
+  transform: translateY(-32px);
 }
 
 .eyebrow {
@@ -72,20 +74,11 @@ main {
 }
 
 h1 {
-  margin: 0;
+  margin: 0 0 34px;
   font-size: clamp(58px, 10vw, 120px);
   font-weight: 650;
-  letter-spacing: -0.075em;
+  letter-spacing: -0.045em;
   line-height: 0.9;
-}
-
-.summary {
-  max-width: 410px;
-  margin: 28px 0 34px;
-  color: #4e5853;
-  font-size: clamp(17px, 2vw, 21px);
-  letter-spacing: -0.025em;
-  line-height: 1.45;
 }
 
 .protocol-link {
@@ -103,7 +96,6 @@ h1 {
   transition: background 160ms ease, transform 160ms ease;
 }
 
-.protocol-link:hover { background: #35423b; transform: translateY(-2px); }
 .protocol-link:focus-visible, .brand:focus-visible { outline: 3px solid #75d7a1; outline-offset: 4px; }
 .protocol-link svg { width: 18px; height: 18px; fill: none; stroke: currentColor; stroke-linecap: round; stroke-linejoin: round; stroke-width: 1.7; }
 
