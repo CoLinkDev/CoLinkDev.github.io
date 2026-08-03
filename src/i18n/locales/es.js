@@ -15,7 +15,8 @@ export default {
     castboard: "CastBoard",
     security: "Seguridad",
     download: "Descargas",
-    github: "GitHub"
+    github: "GitHub",
+    toggleMenu: "Alternar menú"
   },
   features: {
     badge: "Capacidades Principales",

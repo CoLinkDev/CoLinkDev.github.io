@@ -70,7 +70,7 @@ const DEFAULT_LANG = DEFAULT_LOCALE;
           </svg>
           <span>CoLink</span>
         </a>
-        <ul class="nav-links">
+        <ul class="nav-links" id="nav-links">
           <li><a href="#overview" data-i18n="nav.features">{t.nav.features}</a></li>
           <li><a href="#castboard" data-i18n="nav.castboard">{t.nav.castboard}</a></li>
           <li><a href="#security" data-i18n="nav.security">{t.nav.security}</a></li>
@@ -103,6 +103,14 @@ const DEFAULT_LANG = DEFAULT_LOCALE;
             </svg>
             <span data-i18n="nav.github">{t.nav.github}</span>
           </a>
+          <button class="nav-toggle" id="nav-toggle" type="button" aria-label={t.nav.toggleMenu} data-i18n-attr="aria-label:nav.toggleMenu">
+            <svg class="hamburger-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+              <path d="M4 6h16M4 12h16M4 18h16" />
+            </svg>
+            <svg class="close-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+              <path d="M18 6L6 18M6 6l12 12" />
+            </svg>
+          </button>
         </div>
       </nav>
 
@@ -540,6 +548,27 @@ const DEFAULT_LANG = DEFAULT_LOCALE;
           cbStageImgBox.addEventListener('click', () => {
             updateCastBoard(cbCurrentIndex + 1);
           });
+
+          let touchStartX = 0;
+          cbStageImgBox.addEventListener('touchstart', (e) => {
+            if (e.touches && e.touches.length > 0) {
+              touchStartX = e.touches[0].clientX;
+            }
+          }, { passive: true });
+
+          cbStageImgBox.addEventListener('touchend', (e) => {
+            if (e.changedTouches && e.changedTouches.length > 0) {
+              const touchEndX = e.changedTouches[0].clientX;
+              const diff = touchEndX - touchStartX;
+              if (Math.abs(diff) > 40 && currentCastBoardItems.length) {
+                if (diff < 0) {
+                  updateCastBoard(cbCurrentIndex + 1);
+                } else {
+                  updateCastBoard(cbCurrentIndex - 1 + currentCastBoardItems.length);
+                }
+              }
+            }
+          }, { passive: true });
         }
 
         cbDots.forEach((dot) => {
@@ -612,6 +641,38 @@ const DEFAULT_LANG = DEFAULT_LOCALE;
           try {
             localStorage.setItem('colink_lang', key);
           } catch (e) {}
+        }
+
+        // Mobile menu toggle logic
+        const navToggle = document.getElementById('nav-toggle');
+        const navLinks = document.getElementById('nav-links');
+        const stickyNav = document.querySelector('.sticky-nav');
+
+        if (navToggle && navLinks) {
+          navToggle.addEventListener('click', (e) => {
+            e.stopPropagation();
+            const isOpen = navLinks.classList.toggle('is-open');
+            if (stickyNav) stickyNav.classList.toggle('is-menu-open', isOpen);
+            navToggle.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+          });
+
+          // Close menu when clicking a nav link
+          navLinks.querySelectorAll('a').forEach((link) => {
+            link.addEventListener('click', () => {
+              navLinks.classList.remove('is-open');
+              if (stickyNav) stickyNav.classList.remove('is-menu-open');
+              navToggle.setAttribute('aria-expanded', 'false');
+            });
+          });
+
+          // Close menu when clicking outside
+          document.addEventListener('click', (e) => {
+            if (stickyNav && !stickyNav.contains(e.target)) {
+              navLinks.classList.remove('is-open');
+              stickyNav.classList.remove('is-menu-open');
+              navToggle.setAttribute('aria-expanded', 'false');
+            }
+          });
         }
 
         // Dropdown toggle on click

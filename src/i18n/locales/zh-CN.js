@@ -15,7 +15,8 @@ export default {
     castboard: "CastBoard",
     security: "安全",
     download: "下载",
-    github: "GitHub"
+    github: "GitHub",
+    toggleMenu: "切换菜单"
   },
   features: {
     badge: "核心功能",
