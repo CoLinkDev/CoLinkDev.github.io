@@ -16,7 +16,35 @@ html {
   scroll-snap-type: y mandatory;
 }
 
-* { box-sizing: border-box; }
+* {
+  box-sizing: border-box;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+svg {
+  shape-rendering: geometricPrecision;
+}
+
+button, input, select, textarea, a {
+  -webkit-tap-highlight-color: transparent;
+}
+
+/* Global Anti-Aliasing & Corner Smoothing for Complex Elements (Cards, Nav, Dropdowns) */
+.sticky-nav,
+.entry,
+.section-wrapper,
+.site-footer,
+.feature-card,
+.showcase-card,
+.showcase-img-wrapper,
+.dl-card,
+.lang-dropdown {
+  background-clip: padding-box;
+  -webkit-background-clip: padding-box;
+  -webkit-mask-image: -webkit-radial-gradient(white, black);
+  outline: 1px solid transparent;
+}
 
 body { margin: 0; min-width: 320px; color: #121514; background: #f7f7f5; }
 
@@ -26,6 +54,14 @@ main {
   gap: 28px;
   min-height: 100svh;
   padding: 28px;
+}
+
+main::after {
+  content: "";
+  display: block;
+  height: 1px;
+  margin-top: -1px;
+  flex-shrink: 0;
 }
 
 .entry {
@@ -194,6 +230,9 @@ h1 {
   background: rgba(251, 251, 250, 0.65);
   backdrop-filter: blur(16px);
   -webkit-backdrop-filter: blur(16px);
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+  transform: translateZ(0);
   box-shadow: 0 8px 32px rgba(0, 0, 0, 0.06), 0 1px 2px rgba(0, 0, 0, 0.04);
   transition: all 200ms ease;
 }
@@ -234,18 +273,20 @@ h1 {
   align-items: center;
   gap: 8px;
   padding: 7px 14px;
-  border: 1px solid #1b211e;
+  border: 1px solid transparent;
   border-radius: 999px;
   background: #1b211e;
+  box-shadow: 0 0 0 1px #1b211e;
   color: #fff;
   font-size: 13px;
   font-weight: 600;
   text-decoration: none;
-  transition: background 150ms ease;
+  transition: background 150ms ease, box-shadow 150ms ease;
 }
 
 .nav-gh-btn:hover {
   background: #2d3632;
+  box-shadow: 0 0 0 1px #2d3632;
 }
 
 .nav-gh-btn svg {
@@ -307,6 +348,9 @@ h1 {
   background: rgba(255, 255, 255, 0.98);
   backdrop-filter: blur(20px);
   -webkit-backdrop-filter: blur(20px);
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+  transform: translateZ(0);
   box-shadow: 0 12px 32px rgba(0, 0, 0, 0.12), 0 2px 8px rgba(0, 0, 0, 0.04);
   display: none;
   flex-direction: column;
@@ -1069,6 +1113,7 @@ h1 {
   scroll-snap-align: start;
   scroll-snap-stop: always;
   scroll-margin-top: 86px;
+  margin-bottom: 28px;
 }
 
 .footer-top {
@@ -1198,8 +1243,9 @@ h1 {
 .nav-toggle {
   display: none;
   appearance: none;
-  border: 1px solid #1b211e;
+  border: 1px solid transparent;
   background: #1b211e;
+  box-shadow: 0 0 0 1px #1b211e;
   color: #ffffff;
   width: 36px;
   height: 36px;
@@ -1210,12 +1256,13 @@ h1 {
   padding: 0;
   box-sizing: border-box;
   flex-shrink: 0;
-  transition: background 150ms ease, transform 150ms ease;
+  transition: background 150ms ease, transform 150ms ease, box-shadow 150ms ease;
   outline: none;
 }
 
 .nav-toggle:hover {
   background: #2d3632;
+  box-shadow: 0 0 0 1px #2d3632;
 }
 
 .nav-toggle svg {
