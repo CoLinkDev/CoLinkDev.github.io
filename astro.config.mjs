@@ -3,5 +3,9 @@ import react from "@astrojs/react";
 
 export default defineConfig({
   site: "https://colinkdev.github.io",
+  base: "./",
+  build: {
+    assetsPrefix: ".",
+  },
   integrations: [react()],
 });
