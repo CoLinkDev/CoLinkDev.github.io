@@ -31,15 +31,13 @@ button, input, select, textarea, a {
 }
 
 /* Global Anti-Aliasing & Corner Smoothing for Complex Elements (Cards, Nav, Dropdowns) */
-.sticky-nav,
 .entry,
 .section-wrapper,
 .site-footer,
 .feature-card,
 .showcase-card,
 .showcase-img-wrapper,
-.dl-card,
-.lang-dropdown {
+.dl-card {
   background-clip: padding-box;
   -webkit-background-clip: padding-box;
   -webkit-mask-image: -webkit-radial-gradient(white, black);
@@ -228,11 +226,8 @@ h1 {
   border: 1px solid rgba(225, 227, 223, 0.6);
   border-radius: 999px;
   background: rgba(251, 251, 250, 0.65);
-  backdrop-filter: blur(16px);
   -webkit-backdrop-filter: blur(16px);
-  -webkit-backface-visibility: hidden;
-  backface-visibility: hidden;
-  transform: translateZ(0);
+  backdrop-filter: blur(16px);
   box-shadow: 0 8px 32px rgba(0, 0, 0, 0.06), 0 1px 2px rgba(0, 0, 0, 0.04);
   transition: all 200ms ease;
 }
@@ -346,11 +341,8 @@ h1 {
   border: 1px solid rgba(0, 0, 0, 0.08);
   border-radius: 12px;
   background: rgba(255, 255, 255, 0.98);
-  backdrop-filter: blur(20px);
   -webkit-backdrop-filter: blur(20px);
-  -webkit-backface-visibility: hidden;
-  backface-visibility: hidden;
-  transform: translateZ(0);
+  backdrop-filter: blur(20px);
   box-shadow: 0 12px 32px rgba(0, 0, 0, 0.12), 0 2px 8px rgba(0, 0, 0, 0.04);
   display: none;
   flex-direction: column;
@@ -1344,8 +1336,8 @@ h1 {
     right: 0;
     width: 100%;
     background: rgba(255, 255, 255, 0.98);
-    backdrop-filter: blur(20px);
     -webkit-backdrop-filter: blur(20px);
+    backdrop-filter: blur(20px);
     border: 1px solid rgba(225, 227, 223, 0.8);
     border-radius: 18px;
     padding: 8px;
