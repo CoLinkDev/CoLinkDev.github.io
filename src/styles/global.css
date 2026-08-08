@@ -242,9 +242,9 @@ h1 {
   position: sticky;
   top: 16px;
   z-index: 100;
-  display: flex;
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
   align-items: center;
-  justify-content: space-between;
   padding: 10px 20px;
   border: 1px solid rgba(225, 227, 223, 0.6);
   border-radius: 999px;
@@ -263,6 +263,7 @@ h1 {
   font-size: 18px;
   font-weight: 700;
   text-decoration: none;
+  justify-self: start;
 }
 
 .nav-links {
@@ -272,6 +273,7 @@ h1 {
   list-style: none;
   margin: 0;
   padding: 0;
+  justify-self: center;
 }
 
 .nav-links a {
@@ -318,6 +320,7 @@ h1 {
   display: flex;
   align-items: center;
   gap: 10px;
+  justify-self: end;
 }
 
 .lang-selector {
@@ -1152,6 +1155,8 @@ h1 {
   }
 
   .sticky-nav {
+    display: flex;
+    justify-content: space-between;
     position: sticky;
     top: 10px;
     padding: 8px 14px;
