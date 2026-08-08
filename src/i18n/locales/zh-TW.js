@@ -112,5 +112,11 @@ export default {
     docAssets: "資產",
     docLicense: "AGPL-3.0 許可證",
     copyright: "CoLinkDev Team. 基於 AGPL-3.0 許可證開源。"
+  },
+  theme: {
+    selectTheme: "選擇主題",
+    auto: "自動",
+    light: "亮色",
+    dark: "暗色"
   }
 };

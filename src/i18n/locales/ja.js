@@ -112,5 +112,11 @@ export default {
     docAssets: "アセット",
     docLicense: "AGPL-3.0 ライセンス",
     copyright: "CoLinkDev Team. AGPL-3.0 ライセンスのもとで公開。"
+  },
+  theme: {
+    selectTheme: "テーマを選択",
+    auto: "自動",
+    light: "ライト",
+    dark: "ダーク"
   }
 };

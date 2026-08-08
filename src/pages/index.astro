@@ -25,6 +25,16 @@ const DEFAULT_LANG = DEFAULT_LOCALE;
     <link rel="preload" as="image" href="./assets/Screenshot_20260719-172830971.jpg" />
     <link rel="preload" as="image" href="./assets/Screenshot_20260719-172840770.jpg" />
     <title>{t.meta.title}</title>
+    <script is:inline>
+      (function() {
+        try {
+          const savedTheme = localStorage.getItem('colink_theme') || 'auto';
+          const isDark = savedTheme === 'dark' || (savedTheme === 'auto' && window.matchMedia('(prefers-color-scheme: dark)').matches);
+          document.documentElement.setAttribute('data-theme', isDark ? 'dark' : 'light');
+          document.documentElement.setAttribute('data-theme-mode', savedTheme);
+        } catch (e) {}
+      })();
+    </script>
   </head>
   <body>
     <main>
@@ -95,6 +105,46 @@ const DEFAULT_LANG = DEFAULT_LOCALE;
                   <span>{loc.name}</span>
                 </button>
               ))}
+            </div>
+          </div>
+          <div class="theme-selector">
+            <button class="theme-btn" type="button" aria-label={t.theme?.selectTheme || 'Select Theme'} data-i18n-attr="aria-label:theme.selectTheme" id="theme-btn">
+              <svg class="theme-icon theme-icon-auto" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="12" cy="12" r="9" />
+                <path d="M12 3a9 9 0 0 0 0 18z" fill="currentColor" />
+              </svg>
+              <svg class="theme-icon theme-icon-light" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="12" cy="12" r="5"></circle>
+                <line x1="12" y1="1" x2="12" y2="3"></line>
+                <line x1="12" y1="21" x2="12" y2="23"></line>
+                <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                <line x1="1" y1="12" x2="3" y2="12"></line>
+                <line x1="21" y1="12" x2="23" y2="12"></line>
+                <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+              </svg>
+              <svg class="theme-icon theme-icon-dark" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+              </svg>
+              <span id="current-theme-name">{t.theme?.auto || '自动'}</span>
+              <svg viewBox="0 0 24 24" width="12" height="12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M6 9l6 6 6-6"></path>
+              </svg>
+            </button>
+            <div class="theme-dropdown" id="theme-dropdown">
+              <button type="button" class="theme-option" data-theme-val="auto">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" width="14" height="14"><circle cx="12" cy="12" r="9" /><path d="M12 3a9 9 0 0 0 0 18z" fill="currentColor" /></svg>
+                <span data-i18n="theme.auto">{t.theme?.auto || '自动'}</span>
+              </button>
+              <button type="button" class="theme-option" data-theme-val="light">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" width="14" height="14"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+                <span data-i18n="theme.light">{t.theme?.light || '亮色'}</span>
+              </button>
+              <button type="button" class="theme-option" data-theme-val="dark">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" width="14" height="14"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+                <span data-i18n="theme.dark">{t.theme?.dark || '暗色'}</span>
+              </button>
             </div>
           </div>
           <a class="nav-gh-btn" href="https://github.com/CoLinkDev/CoLink" target="_blank" rel="noopener noreferrer">
@@ -416,7 +466,7 @@ const DEFAULT_LANG = DEFAULT_LOCALE;
       <footer class="site-footer">
         <div class="footer-top">
           <div class="footer-brand-col">
-            <a class="brand" href="#" style="color: #fff;">
+            <a class="brand" href="#">
               <svg class="mark" viewBox="48 44 393 393" width="24" height="24" aria-hidden="true">
                 <path d="M420.523 214.076A182 182 0 1 0 218.076 416.523A32 32 0 0 0 220.172 352.557A118 118 0 1 1 356.557 216.172A32 32 0 0 0 420.523 214.076Z" />
                 <circle cx="346.07" cy="342.07" r="85" />
@@ -594,6 +644,13 @@ const DEFAULT_LANG = DEFAULT_LOCALE;
             updateCastBoard(cbCurrentIndex);
           }
 
+          // Sync Theme Button Label for current language
+          const themeLabel = document.getElementById('current-theme-name');
+          const curMode = document.documentElement.getAttribute('data-theme-mode') || 'auto';
+          if (themeLabel && t.theme) {
+            themeLabel.textContent = t.theme[curMode] || curMode;
+          }
+
           try {
             localStorage.setItem('colink_lang', key);
           } catch (e) {}
@@ -636,15 +693,60 @@ const DEFAULT_LANG = DEFAULT_LOCALE;
         const langDropdown = document.getElementById('lang-dropdown');
         const langSelector = document.querySelector('.lang-selector');
 
+        const themeBtn = document.getElementById('theme-btn');
+        const themeDropdown = document.getElementById('theme-dropdown');
+        const themeSelector = document.querySelector('.theme-selector');
+
+        function applyTheme(mode) {
+          const isDark = mode === 'dark' || (mode === 'auto' && window.matchMedia('(prefers-color-scheme: dark)').matches);
+          document.documentElement.setAttribute('data-theme', isDark ? 'dark' : 'light');
+          document.documentElement.setAttribute('data-theme-mode', mode);
+
+          document.querySelectorAll('.theme-option').forEach((opt) => {
+            if (opt.getAttribute('data-theme-val') === mode) {
+              opt.classList.add('is-active');
+            } else {
+              opt.classList.remove('is-active');
+            }
+          });
+
+          const themeLabel = document.getElementById('current-theme-name');
+          const currentLangKey = (localStorage.getItem('colink_lang') || '').toLowerCase();
+          const currentLoc = LOCALES_DATA[currentLangKey] || LOCALES_DATA[DEFAULT_LANG];
+          const tCur = currentLoc ? currentLoc.translations : null;
+          if (themeLabel && tCur && tCur.theme) {
+            themeLabel.textContent = tCur.theme[mode] || mode;
+          }
+
+          try {
+            localStorage.setItem('colink_theme', mode);
+          } catch (e) {}
+        }
+
         if (langBtn && langDropdown) {
           langBtn.addEventListener('click', (e) => {
             e.stopPropagation();
+            if (themeDropdown) themeDropdown.classList.remove('is-open');
             langDropdown.classList.toggle('is-open');
           });
 
           document.addEventListener('click', (e) => {
             if (langSelector && !langSelector.contains(e.target)) {
               langDropdown.classList.remove('is-open');
+            }
+          });
+        }
+
+        if (themeBtn && themeDropdown) {
+          themeBtn.addEventListener('click', (e) => {
+            e.stopPropagation();
+            if (langDropdown) langDropdown.classList.remove('is-open');
+            themeDropdown.classList.toggle('is-open');
+          });
+
+          document.addEventListener('click', (e) => {
+            if (themeSelector && !themeSelector.contains(e.target)) {
+              themeDropdown.classList.remove('is-open');
             }
           });
         }
@@ -658,6 +760,31 @@ const DEFAULT_LANG = DEFAULT_LOCALE;
             if (langDropdown) langDropdown.classList.remove('is-open');
           });
         });
+
+        document.querySelectorAll('.theme-option').forEach((btn) => {
+          btn.addEventListener('click', (e) => {
+            e.preventDefault();
+            const mode = btn.getAttribute('data-theme-val');
+            applyTheme(mode);
+            if (themeDropdown) themeDropdown.classList.remove('is-open');
+          });
+        });
+
+        window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', () => {
+          let currentMode = 'auto';
+          try {
+            currentMode = localStorage.getItem('colink_theme') || 'auto';
+          } catch (e) {}
+          if (currentMode === 'auto') {
+            applyTheme('auto');
+          }
+        });
+
+        let savedThemeMode = 'auto';
+        try {
+          savedThemeMode = localStorage.getItem('colink_theme') || 'auto';
+        } catch (e) {}
+        applyTheme(savedThemeMode);
 
         // 语言判定逻辑：1. 用户选择语言 -> 2. 用户浏览器语言 -> 3. Fallback 英文
         function detectBrowserLanguage() {

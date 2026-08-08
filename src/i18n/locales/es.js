@@ -112,5 +112,11 @@ export default {
     docAssets: "Recursos gráficos",
     docLicense: "Licencia AGPL-3.0",
     copyright: "CoLinkDev Team. Publicado bajo la Licencia AGPL-3.0."
+  },
+  theme: {
+    selectTheme: "Seleccionar tema",
+    auto: "Automático",
+    light: "Claro",
+    dark: "Oscuro"
   }
 };
