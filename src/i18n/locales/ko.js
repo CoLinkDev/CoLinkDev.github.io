@@ -112,8 +112,5 @@ export default {
     docAssets: "에셋",
     docLicense: "AGPL-3.0 라이선스",
     copyright: "CoLinkDev Team. AGPL-3.0 라이선스로 공개됨."
-  },
-  modal: {
-    closeAria: "닫기"
   }
 };

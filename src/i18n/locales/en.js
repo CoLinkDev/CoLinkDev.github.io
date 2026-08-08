@@ -106,14 +106,11 @@ export default {
     slogan: "Connect all your devices for seamless collaboration.",
     appsTitle: "Apps & Components",
     docsTitle: "Docs & Resources",
-    docProtocolRepo: "Protocol Docs Repo",
+    docProtocolRepo: "Protocol Documentation Repo",
     docProtocolOnline: "Protocol Docs (Online)",
     docDockerGuide: "Docker Self-Hosting Guide",
     docAssets: "Assets",
     docLicense: "AGPL-3.0 License",
     copyright: "CoLinkDev Team. Released under the AGPL-3.0 License."
-  },
-  modal: {
-    closeAria: "Close"
   }
 };

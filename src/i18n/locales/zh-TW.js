@@ -112,8 +112,5 @@ export default {
     docAssets: "資產",
     docLicense: "AGPL-3.0 許可證",
     copyright: "CoLinkDev Team. 基於 AGPL-3.0 許可證開源。"
-  },
-  modal: {
-    closeAria: "關閉"
   }
 };

@@ -455,53 +455,9 @@ const DEFAULT_LANG = DEFAULT_LOCALE;
       </footer>
     </main>
 
-    <!-- Lightbox Modal -->
-    <div class="lightbox-modal" id="lightbox">
-      <div class="lightbox-inner">
-        <button class="lightbox-close" id="lightbox-close" data-i18n-attr="aria-label:modal.closeAria" aria-label={t.modal.closeAria}>&times;</button>
-        <img class="lightbox-img-element" id="lightbox-img" src="" alt="Zoomed screenshot" />
-        <div class="lightbox-caption" id="lightbox-caption"></div>
-      </div>
-    </div>
-
     <!-- Client-Side i18n & Interactive Script -->
     <script is:inline define:vars={{ LOCALES_DATA: LOCALES, DEFAULT_LANG }}>
       document.addEventListener('DOMContentLoaded', () => {
-        // --- Lightbox Modal ---
-        const lightbox = document.getElementById('lightbox');
-        const lightboxImg = document.getElementById('lightbox-img');
-        const lightboxCaption = document.getElementById('lightbox-caption');
-        const lightboxClose = document.getElementById('lightbox-close');
-
-        const triggers = document.querySelectorAll('[data-img]');
-        triggers.forEach(trigger => {
-          trigger.addEventListener('click', () => {
-            const imgSrc = trigger.getAttribute('data-img');
-            const caption = trigger.getAttribute('data-caption') || '';
-            if (imgSrc) {
-              lightboxImg.src = imgSrc;
-              lightboxCaption.textContent = caption;
-              lightbox.classList.add('active');
-            }
-          });
-        });
-
-        const closeLightbox = () => {
-          if (lightbox) lightbox.classList.remove('active');
-        };
-
-        if (lightboxClose) lightboxClose.addEventListener('click', closeLightbox);
-        if (lightbox) {
-          lightbox.addEventListener('click', (e) => {
-            if (e.target === lightbox) closeLightbox();
-          });
-        }
-        document.addEventListener('keydown', (e) => {
-          if (e.key === 'Escape' && lightbox && lightbox.classList.contains('active')) {
-            closeLightbox();
-          }
-        });
-
         // --- CastBoard Rotation & Data ---
         const cbItemsSrcs = [
           './assets/Screenshot_20260719-172822561.jpg',
