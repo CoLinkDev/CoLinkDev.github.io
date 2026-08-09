@@ -39,7 +39,7 @@ const DEFAULT_LANG = DEFAULT_LOCALE;
   <body>
     <main>
       <!-- Top Hero Section -->
-      <section class="entry" aria-labelledby="site-title">
+      <section class="entry" aria-labelledby="site-title" data-pages="1" data-pages-mobile="1">
         <a class="brand" href="./" aria-label="CoLink home">
           <svg class="mark" viewBox="48 44 393 393" aria-hidden="true">
             <path d="M420.523 214.076A182 182 0 1 0 218.076 416.523A32 32 0 0 0 220.172 352.557A118 118 0 1 1 356.557 216.172A32 32 0 0 0 420.523 214.076Z" />
@@ -165,7 +165,7 @@ const DEFAULT_LANG = DEFAULT_LOCALE;
       </nav>
 
       <!-- Section 1: 核心功能 -->
-      <section id="overview" class="section-wrapper">
+      <section id="overview" class="section-wrapper" data-pages="1" data-pages-mobile="unlimited">
         <div class="section-header">
           <span class="section-badge" data-i18n="features.badge">{t.features.badge}</span>
           <h2 class="section-heading" data-i18n="features.heading">{t.features.heading}</h2>
@@ -257,7 +257,7 @@ const DEFAULT_LANG = DEFAULT_LOCALE;
       </section>
 
       <!-- Section 2: CastBoard -->
-      <section id="castboard" class="section-wrapper castboard-wrapper">
+      <section id="castboard" class="section-wrapper castboard-wrapper" data-pages="1" data-pages-mobile="unlimited">
         <div class="cb-header-box">
           <span class="section-badge" data-i18n="castboard.badge">{t.castboard.badge}</span>
           <h2 class="section-heading cb-main-heading" data-i18n="castboard.heading">{t.castboard.heading}</h2>
@@ -319,7 +319,7 @@ const DEFAULT_LANG = DEFAULT_LOCALE;
       </section>
 
       <!-- Section 3: 安全 -->
-      <section id="security" class="section-wrapper">
+      <section id="security" class="section-wrapper" data-pages="1" data-pages-mobile="unlimited">
         <div class="section-header">
           <span class="section-badge" data-i18n="security.badge">{t.security.badge}</span>
           <h2 class="section-heading" data-i18n="security.heading">{t.security.heading}</h2>
@@ -380,7 +380,7 @@ const DEFAULT_LANG = DEFAULT_LOCALE;
       </section>
 
       <!-- Section 4: 下载 -->
-      <section id="download" class="section-wrapper">
+      <section id="download" class="section-wrapper" data-pages="1" data-pages-mobile="unlimited">
         <div class="section-header">
           <span class="section-badge" data-i18n="download.badge">{t.download.badge}</span>
           <h2 class="section-heading" data-i18n="download.heading">{t.download.heading}</h2>
@@ -463,7 +463,7 @@ const DEFAULT_LANG = DEFAULT_LOCALE;
       </section>
 
       <!-- Footer -->
-      <footer class="site-footer">
+      <footer class="site-footer" data-pages="1" data-pages-mobile="unlimited">
         <div class="footer-top">
           <div class="footer-brand-col">
             <a class="brand" href="#">
@@ -508,6 +508,34 @@ const DEFAULT_LANG = DEFAULT_LOCALE;
     <!-- Client-Side i18n & Interactive Script -->
     <script is:inline define:vars={{ LOCALES_DATA: LOCALES, DEFAULT_LANG }}>
       document.addEventListener('DOMContentLoaded', () => {
+        // --- Page Height System ---
+        const MOBILE_BREAKPOINT = 900;
+
+        function applyPageHeights() {
+          const isMobile = window.innerWidth <= MOBILE_BREAKPOINT;
+          const sections = document.querySelectorAll('[data-pages]');
+
+          sections.forEach((section) => {
+            const pages = isMobile
+              ? section.getAttribute('data-pages-mobile')
+              : section.getAttribute('data-pages');
+
+            if (!pages || pages === 'unlimited') {
+              section.style.height = '';
+              section.style.minHeight = '';
+            } else {
+              const multiplier = parseFloat(pages);
+              if (!isNaN(multiplier) && multiplier > 0) {
+                section.style.height = 'calc(' + multiplier + ' * var(--page-height))';
+                section.style.minHeight = '';
+              }
+            }
+          });
+        }
+
+        applyPageHeights();
+        window.addEventListener('resize', applyPageHeights);
+
         // --- CastBoard Rotation & Data ---
         const cbItemsSrcs = [
           './assets/Screenshot_20260719-172822561.jpg',
