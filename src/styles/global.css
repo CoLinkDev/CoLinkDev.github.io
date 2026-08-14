@@ -763,80 +763,245 @@ main.fullpage-container {
 }
 
 /* ==========================================================================
-   Section 1: Features Grid (核心功能)
+   Sections 1 & 3: Feature and Security Decks
    ========================================================================== */
 
 .features-section {
   background: var(--bg-main);
 }
 
-.feature-grid-9 {
+.showcase-deck {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: clamp(8px, 1.2vh, 14px) clamp(10px, 1.4vw, 18px);
+  grid-template-columns: clamp(190px, 20vw, 280px) minmax(0, 1fr);
+  gap: clamp(16px, 2vw, 28px);
   width: 100%;
+  min-height: 0;
+  flex: 1;
 }
 
-.feature-card {
+.showcase-pagination {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 4px;
+  min-height: 0;
+}
+
+.showcase-page {
+  position: relative;
+  display: grid;
+  grid-template-columns: 28px minmax(0, 1fr);
+  align-items: center;
+  gap: 8px;
+  flex: 1;
+  min-height: 26px;
+  padding: 5px 10px 5px 12px;
+  border: 0;
+  border-left: 2px solid transparent;
+  border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+  background: transparent;
+  color: var(--text-tertiary);
+  font-family: var(--font-sans);
+  text-align: left;
+  cursor: pointer;
+  transition: border-color var(--transition-fast), background var(--transition-fast), color var(--transition-fast);
+}
+
+.showcase-page-index {
+  color: var(--text-tertiary);
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+}
+
+.showcase-page-title {
+  display: -webkit-box;
+  overflow: hidden;
+  color: inherit;
+  font-size: clamp(11.5px, 0.9vw, 13px);
+  font-weight: 600;
+  line-height: 1.3;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+}
+
+.showcase-page:hover {
+  background: var(--brand-green-tint);
+  color: var(--brand-green-dark);
+}
+
+.showcase-page.is-active {
+  border-left-color: var(--brand-green);
+  background: var(--brand-green-light);
+  color: var(--brand-green-dark);
+}
+
+.showcase-page.is-active .showcase-page-index {
+  color: inherit;
+}
+
+.showcase-panel {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  min-height: 0;
+  overflow: hidden;
+  padding: clamp(26px, 5vh, 56px) clamp(28px, 5vw, 80px) clamp(22px, 3vh, 36px);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-lg);
+  background: var(--bg-surface);
+  box-shadow: var(--shadow-card);
+  animation: showcase-panel-enter 260ms ease both;
+}
+
+.showcase-panel::before {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 4px;
+  background: linear-gradient(90deg, var(--brand-green), rgba(38, 188, 117, 0));
+  content: "";
+}
+
+.showcase-panel-number {
+  position: absolute;
+  top: clamp(16px, 3vh, 32px);
+  right: clamp(22px, 4vw, 56px);
+  color: var(--brand-green-light);
+  font-family: var(--font-heading);
+  font-size: clamp(72px, 12vw, 164px);
+  font-weight: 700;
+  letter-spacing: -0.08em;
+  line-height: 0.8;
+  pointer-events: none;
+  user-select: none;
+}
+
+.showcase-panel-content {
+  position: relative;
+  z-index: 1;
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  text-align: left;
-  padding: clamp(10px, 1.4vh, 16px) clamp(12px, 1.3vw, 18px);
-  border: 1px solid var(--border-subtle);
-  border-radius: var(--radius-md);
-  background: var(--bg-surface);
-  box-shadow: var(--shadow-card);
-  transition: border-color var(--transition-normal), box-shadow var(--transition-normal);
+  justify-content: center;
+  max-width: min(100%, 680px);
+  height: 100%;
 }
 
-.feature-card:hover {
-  border-color: var(--brand-green);
-  box-shadow: 0 4px 16px var(--brand-green-tint);
-}
-
-.feature-icon-box {
+.showcase-icon {
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 32px;
-  height: 32px;
-  border-radius: var(--radius-sm);
+  width: clamp(54px, 5vw, 72px);
+  height: clamp(54px, 5vw, 72px);
+  margin-bottom: clamp(20px, 3vh, 32px);
+  border-radius: var(--radius-md);
   background: var(--brand-green-light);
   color: var(--brand-green-dark);
-  margin-bottom: clamp(4px, 0.7vh, 8px);
-  flex-shrink: 0;
 }
 
-[data-theme="dark"] .feature-icon-box {
-  color: #4fe89b;
-}
-
-.feature-icon-box svg {
-  width: 16px;
-  height: 16px;
+.showcase-icon svg {
+  width: 50%;
+  height: 50%;
   fill: none;
   stroke: currentColor;
   stroke-linecap: round;
   stroke-linejoin: round;
-  stroke-width: 1.8;
+  stroke-width: 1.7;
 }
 
-.feature-title {
-  margin: 0 0 3px;
-  font-size: clamp(13.5px, 1.15vw, 15px);
-  font-weight: 700;
+.showcase-panel h3 {
+  max-width: 18ch;
+  margin: 0 0 clamp(10px, 1.5vh, 16px);
   color: var(--text-primary);
-  letter-spacing: -0.01em;
-  text-align: left;
+  font-family: var(--font-heading);
+  font-size: clamp(26px, 3.4vw, 46px);
+  font-weight: 700;
+  letter-spacing: -0.035em;
+  line-height: 1.12;
 }
 
-.feature-card p {
+.showcase-panel p {
+  max-width: 58ch;
   margin: 0;
   color: var(--text-secondary);
-  font-size: clamp(11.5px, 0.95vw, 12.5px);
-  line-height: 1.42;
-  text-align: left;
+  font-size: clamp(14px, 1.3vw, 17px);
+  line-height: 1.7;
+}
+
+.showcase-controls {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-top: clamp(20px, 3vh, 36px);
+}
+
+.showcase-controls button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  padding: 0;
+  border: 1px solid var(--border-subtle);
+  border-radius: 50%;
+  background: transparent;
+  color: var(--text-primary);
+  cursor: pointer;
+  transition: border-color var(--transition-fast), background var(--transition-fast), color var(--transition-fast);
+}
+
+.showcase-controls button:hover {
+  border-color: var(--brand-green);
+  background: var(--brand-green-light);
+  color: var(--brand-green-dark);
+}
+
+.showcase-controls svg {
+  width: 18px;
+  height: 18px;
+  fill: none;
+  stroke: currentColor;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-width: 2;
+}
+
+.showcase-count {
+  min-width: 76px;
+  color: var(--text-tertiary);
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-align: center;
+}
+
+.showcase-count strong {
+  color: var(--text-primary);
+}
+
+[data-theme="dark"] .showcase-icon {
+  color: #4fe89b;
+}
+
+[data-theme="dark"] .showcase-panel-number {
+  color: rgba(38, 188, 117, 0.11);
+}
+
+@keyframes showcase-panel-enter {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 /* ==========================================================================
@@ -1026,99 +1191,13 @@ main.fullpage-container {
 }
 
 /* ==========================================================================
-   Section 3: Security & Privacy (安全与隐私 - 3+2 稳健排版)
+   Section 3: Security & Privacy
    ========================================================================== */
 
 .security-section {
   background: var(--bg-main);
 }
 
-.sec-specs-grid {
-  display: grid;
-  grid-template-columns: repeat(6, 1fr);
-  gap: clamp(10px, 1.4vh, 16px) clamp(12px, 1.5vw, 20px);
-  width: 100%;
-}
-
-.spec-item:nth-child(1),
-.spec-item:nth-child(2),
-.spec-item:nth-child(3) {
-  grid-column: span 2;
-}
-
-.spec-item:nth-child(4),
-.spec-item:nth-child(5) {
-  grid-column: span 3;
-}
-
-.spec-item {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  text-align: left;
-  padding: clamp(12px, 1.5vh, 18px) clamp(14px, 1.4vw, 20px);
-  border: 1px solid var(--border-subtle);
-  border-radius: var(--radius-md);
-  background: var(--bg-surface);
-  box-shadow: var(--shadow-card);
-  transition: border-color var(--transition-normal), box-shadow var(--transition-normal);
-}
-
-.spec-item:hover {
-  border-color: var(--brand-green);
-  box-shadow: 0 4px 16px var(--brand-green-tint);
-}
-
-.spec-icon {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 34px;
-  height: 34px;
-  border-radius: var(--radius-sm);
-  background: var(--brand-green-light);
-  color: var(--brand-green-dark);
-  margin-bottom: clamp(6px, 0.8vh, 10px);
-  flex-shrink: 0;
-}
-
-[data-theme="dark"] .spec-icon {
-  color: #4fe89b;
-}
-
-.spec-icon svg {
-  width: 18px;
-  height: 18px;
-  fill: none;
-  stroke: currentColor;
-  stroke-linecap: round;
-  stroke-linejoin: round;
-  stroke-width: 1.8;
-}
-
-.spec-content {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  text-align: left;
-}
-
-.spec-content h4 {
-  margin: 0 0 4px;
-  font-size: clamp(14.5px, 1.2vw, 16.5px);
-  font-weight: 700;
-  color: var(--text-primary);
-  letter-spacing: -0.01em;
-  text-align: left;
-}
-
-.spec-content p {
-  margin: 0;
-  color: var(--text-secondary);
-  font-size: clamp(11.8px, 0.95vw, 12.8px);
-  line-height: 1.48;
-  text-align: left;
-}
 
 /* ==========================================================================
    Section 4: Download & Deploy (下载与部署 - 5列单行一屏)
@@ -1383,29 +1462,13 @@ main.fullpage-container {
     padding: 72px 20px;
   }
 
-  .feature-grid-9 {
-    grid-template-columns: repeat(2, 1fr);
+  .showcase-deck {
+    min-height: 420px;
   }
 
   .cb-viewer {
     grid-template-columns: 1fr;
     gap: 28px;
-  }
-
-  .sec-specs-grid {
-    grid-template-columns: repeat(2, 1fr);
-  }
-
-  .spec-item:nth-child(1),
-  .spec-item:nth-child(2),
-  .spec-item:nth-child(3),
-  .spec-item:nth-child(4),
-  .spec-item:nth-child(5) {
-    grid-column: span 1;
-  }
-
-  .spec-item:nth-child(5) {
-    grid-column: span 2;
   }
 
   .download-cards-grid {
@@ -1473,16 +1536,47 @@ main.fullpage-container {
     font-size: 14.5px;
   }
 
-  .feature-grid-9 {
+  .showcase-deck {
     grid-template-columns: 1fr;
+    gap: 14px;
+    min-height: 440px;
   }
 
-  .sec-specs-grid {
-    grid-template-columns: 1fr;
+  .showcase-pagination {
+    order: 2;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+    overflow-x: auto;
+    padding-bottom: 2px;
   }
 
-  .spec-item:nth-child(5) {
-    grid-column: span 1;
+  .showcase-page {
+    flex: 0 0 148px;
+    min-height: 42px;
+    padding: 5px 8px;
+    border-left: 0;
+    border-bottom: 2px solid transparent;
+    border-radius: var(--radius-sm) var(--radius-sm) 0 0;
+  }
+
+  .showcase-page.is-active {
+    border-bottom-color: var(--brand-green);
+  }
+
+  .showcase-panel {
+    min-height: 390px;
+    padding: 32px 28px 24px;
+  }
+
+  .showcase-panel-number {
+    top: 22px;
+    right: 24px;
+    font-size: 96px;
+  }
+
+  .showcase-panel h3 {
+    font-size: clamp(25px, 8vw, 38px);
   }
 
   .download-cards-grid {
