@@ -46,36 +46,63 @@ const platforms = [
   },
 ];
 
+function PlatformIcon({ platform }) {
+  return (
+    <div className={`dl-platform-icon ${platform.className || ''}`}>
+      <svg viewBox="0 0 24 24" aria-hidden="true">{platform.icon}</svg>
+    </div>
+  );
+}
+
+function PlatformAction({ platform, t }) {
+  const label = t.download[platform.buttonKey];
+
+  if (!platform.href) return <span className="dl-btn dl-btn-disabled">{label}</span>;
+
+  return (
+    <a className="dl-btn" href={platform.href} target="_blank" rel="noopener noreferrer">
+      <span>{label}</span>
+      <ExternalLinkIcon />
+    </a>
+  );
+}
+
 export default function DownloadSection({ t }) {
+  const [windows, android, linux, docker, apple] = platforms;
+
   return (
     <section id="download" className="page-section download-section">
       <div className="section-inner">
-        <div className="section-header">
+        <div className="section-header download-header">
           <span className="section-badge">{t.download.badge}</span>
           <h2 className="section-heading">{t.download.heading}</h2>
           <p className="section-desc">{t.download.desc}</p>
         </div>
 
-        <div className="download-cards-grid">
-          {platforms.map((platform) => (
-            <div className={`dl-card ${platform.className || ''}`} key={platform.titleKey}>
-              <div className="dl-header">
-                <div className="dl-platform-icon">
-                  <svg viewBox="0 0 24 24" aria-hidden="true">{platform.icon}</svg>
-                </div>
-              </div>
-              <h3>{t.download[platform.titleKey]}</h3>
-              <p>{t.download[platform.descriptionKey]}</p>
-              {platform.href ? (
-                <a className="dl-btn" href={platform.href} target="_blank" rel="noopener noreferrer">
-                  <span>{t.download[platform.buttonKey]}</span>
-                  <ExternalLinkIcon />
-                </a>
-              ) : (
-                <span className="dl-btn dl-btn-disabled">{t.download[platform.buttonKey]}</span>
-              )}
+        <div className="download-hub">
+          <div className="dl-client-area">
+            <div className="dl-primary-grid">
+              {[windows, android, linux, apple].map((platform) => (
+                <article className={`dl-primary-card ${platform.className || ''}`} key={platform.titleKey}>
+                  <PlatformIcon platform={platform} />
+                  <div className="dl-card-copy">
+                    <h3>{t.download[platform.titleKey]}</h3>
+                    <p>{t.download[platform.descriptionKey]}</p>
+                  </div>
+                  <PlatformAction platform={platform} t={t} />
+                </article>
+              ))}
             </div>
-          ))}
+          </div>
+
+          <article className="dl-server-card">
+            <PlatformIcon platform={docker} />
+            <div className="dl-card-copy">
+              <h3>{t.download[docker.titleKey]}</h3>
+              <p>{t.download[docker.descriptionKey]}</p>
+            </div>
+            <PlatformAction platform={docker} t={t} />
+          </article>
         </div>
       </div>
     </section>
