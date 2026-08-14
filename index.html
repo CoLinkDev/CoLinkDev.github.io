@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="CoLink is a cross-platform device connectivity tool supporting clipboard sync, fast file transfer, remote terminal & device control, CastBoard status screen, and end-to-end security encryption." />
+    <meta name="theme-color" content="#f7f7f5" />
+    <link rel="icon" href="./favicon.svg" type="image/svg+xml" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Google+Sans:wght@500;700&family=Inter:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="preload" as="image" href="./assets/Screenshot_20260719-172830971.jpg" />
+    <link rel="preload" as="image" href="./assets/Screenshot_20260719-172840770.jpg" />
+    <title>CoLink</title>
+    <script>
+      (function () {
+        try {
+          const savedTheme = localStorage.getItem('colink_theme') || 'auto';
+          const isDark =
+            savedTheme === 'dark' ||
+            (savedTheme === 'auto' && window.matchMedia('(prefers-color-scheme: dark)').matches);
+          document.documentElement.setAttribute('data-theme', isDark ? 'dark' : 'light');
+          document.documentElement.setAttribute('data-theme-mode', savedTheme);
+        } catch (e) {}
+      })();
+    </script>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.jsx"></script>
+  </body>
+</html>
