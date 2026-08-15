@@ -38,6 +38,8 @@ export default function Header({
 
   const handleNavLinkClick = () => {
     setIsMenuOpen(false);
+    setIsLangOpen(false);
+    setIsThemeOpen(false);
   };
 
   const currentLocale = LOCALES[currentLang] || LOCALES.en;
@@ -58,7 +60,8 @@ export default function Header({
           <span>CoLink</span>
         </a>
 
-        <ul className="nav-links" id="nav-links">
+        <div className="nav-menu">
+          <ul className="nav-links" id="nav-links">
           <li>
             <a
               href="#overview"
@@ -95,7 +98,7 @@ export default function Header({
               {t.nav.download}
             </a>
           </li>
-        </ul>
+          </ul>
 
         <div className="nav-right-actions">
           {/* Language Selector */}
@@ -324,41 +327,42 @@ export default function Header({
             </svg>
             <span>{t.nav.github}</span>
           </a>
-
-          {/* Mobile Nav Toggle */}
-          <button
-            className="nav-toggle"
-            id="nav-toggle"
-            type="button"
-            aria-label={t.nav.toggleMenu}
-            aria-expanded={isMenuOpen}
-            onClick={(e) => {
-              e.stopPropagation();
-              setIsMenuOpen((prev) => !prev);
-            }}
-          >
-            <svg
-              className="hamburger-icon"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              strokeWidth="2"
-              strokeLinecap="round"
-            >
-              <path d="M4 6h16M4 12h16M4 18h16" />
-            </svg>
-            <svg
-              className="close-icon"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              strokeWidth="2"
-              strokeLinecap="round"
-            >
-              <path d="M18 6L6 18M6 6l12 12" />
-            </svg>
-          </button>
+          </div>
         </div>
+
+        {/* Mobile Nav Toggle */}
+        <button
+          className="nav-toggle"
+          id="nav-toggle"
+          type="button"
+          aria-label={t.nav.toggleMenu}
+          aria-expanded={isMenuOpen}
+          onClick={(e) => {
+            e.stopPropagation();
+            setIsMenuOpen((prev) => !prev);
+          }}
+        >
+          <svg
+            className="hamburger-icon"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            strokeWidth="2"
+            strokeLinecap="round"
+          >
+            <path d="M4 6h16M4 12h16M4 18h16" />
+          </svg>
+          <svg
+            className="close-icon"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            strokeWidth="2"
+            strokeLinecap="round"
+          >
+            <path d="M18 6L6 18M6 6l12 12" />
+          </svg>
+        </button>
       </nav>
     </header>
   );

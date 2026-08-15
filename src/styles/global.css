@@ -240,6 +240,10 @@ h4,
   height: 22px;
 }
 
+.nav-menu {
+  display: contents;
+}
+
 .mark path {
   fill: currentColor;
 }
@@ -1619,6 +1623,7 @@ main.fullpage-container {
   }
 
   .navbar {
+    position: relative;
     display: flex;
     justify-content: space-between;
     padding: 6px 14px;
@@ -1628,25 +1633,14 @@ main.fullpage-container {
     display: inline-flex;
   }
 
-  .nav-gh-btn span {
-    display: none;
-  }
-
-  .nav-gh-btn {
-    width: 32px;
-    height: 32px;
-    padding: 0;
-    justify-content: center;
-    border-radius: 50%;
-  }
-
-  .nav-links {
+  .nav-menu {
     position: absolute;
     top: calc(100% + 10px);
     right: 14px;
     left: auto;
-    width: min(180px, calc(100vw - 28px));
-    min-width: 0;
+    display: flex;
+    flex-direction: column;
+    width: min(280px, calc(100vw - 28px));
     border: 1px solid var(--border-subtle);
     border-radius: var(--radius-md);
     background: var(--bg-surface);
@@ -1654,10 +1648,6 @@ main.fullpage-container {
     backdrop-filter: blur(20px);
     padding: 5px;
     box-shadow: 0 12px 36px rgba(0, 0, 0, 0.15), 0 2px 8px rgba(0, 0, 0, 0.05);
-    display: flex;
-    flex-direction: column;
-    align-items: stretch;
-    gap: 2px;
     z-index: 2000;
     visibility: hidden;
     opacity: 0;
@@ -1667,12 +1657,31 @@ main.fullpage-container {
     transition: opacity 160ms ease, transform 180ms ease, visibility 0s linear 180ms;
   }
 
-  .navbar.is-menu-open .nav-links {
+  .navbar.is-menu-open .nav-menu {
     visibility: visible;
     opacity: 1;
     pointer-events: auto;
     transform: translateY(0) scale(1);
     transition-delay: 0s;
+  }
+
+  .nav-links {
+    position: static;
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 2px;
+    width: auto;
+    min-width: 0;
+    padding: 0 0 5px;
+    border: 0;
+    border-radius: 0;
+    background: transparent;
+    box-shadow: none;
+    opacity: 1;
+    pointer-events: auto;
+    transform: none;
+    visibility: visible;
   }
 
   .nav-links li a {
@@ -1689,6 +1698,53 @@ main.fullpage-container {
     color: var(--brand-green-dark);
     background: var(--brand-green-light);
     font-weight: 700;
+  }
+
+  .nav-right-actions {
+    justify-self: auto;
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%;
+    gap: 8px;
+    padding: 10px 4px 4px;
+    border-top: 1px solid var(--border-subtle);
+  }
+
+  .nav-menu .lang-selector,
+  .nav-menu .theme-selector {
+    flex: 1 1 calc(50% - 4px);
+    min-width: 0;
+  }
+
+  .nav-menu .lang-btn,
+  .nav-menu .theme-btn {
+    justify-content: center;
+    width: 100%;
+    padding: 6px 8px;
+    font-size: 12px;
+  }
+
+  .nav-menu .nav-gh-btn {
+    flex: 1 0 100%;
+    justify-content: center;
+    width: 100%;
+    height: 34px;
+    padding: 5px 12px;
+    border-radius: var(--radius-pill);
+  }
+
+  .nav-menu .nav-gh-btn span {
+    display: inline;
+  }
+
+  [data-theme="dark"] .nav-menu {
+    border-color: rgba(255, 255, 255, 0.14);
+    background: #18201c;
+    box-shadow: 0 14px 40px rgba(0, 0, 0, 0.25);
+  }
+
+  [data-theme="dark"] .nav-right-actions {
+    border-color: rgba(255, 255, 255, 0.1);
   }
 
   .hero-section {
