@@ -1,7 +1,7 @@
 export default {
   meta: {
     title: "CoLink • 连接你的所有设备，无缝协作",
-    description: "CoLink 是一款跨平台设备互联工具，支持剪贴板同步、极速文件传输、远程终端与设备控制、CastBoard 状态屏及端到端安全加密。"
+    description: "CoLink 是一款跨平台设备互联工具，支持极速文件传输、远程终端与设备控制、CastBoard 状态屏及端到端安全加密。"
   },
   hero: {
     eyebrow: "连接你的所有设备，无缝协作。",
@@ -21,9 +21,7 @@ export default {
   features: {
     badge: "核心功能",
     heading: "跨平台无缝协同，连接你的所有设备",
-    desc: "CoLink 是一款开源设备互联工具。将剪贴板同步、文件传输、远程访问与硬件监控整合于同一套连接中。无论设备处于同一局域网还是通过互联网连接，都能安全高效地协作。",
-    card1Title: "剪贴板无缝同步",
-    card1Desc: "在一台设备上复制，在另一台设备上直接粘贴。支持纯文本、富文本和图片。后台自动同步，无需手动干预。",
+    desc: "CoLink 是一款开源设备互联工具。将文件传输、远程访问与硬件监控整合于同一套连接中。无论设备处于同一局域网还是通过互联网连接，都能安全高效地协作。",
     card2Title: "局域网极速直连",
     card2Desc: "同一局域网设备通过 mDNS 自动发现，建立 WebSocket P2P 直连，传输速度仅受物理带宽限制，文件无大小限制。",
     card3Title: "文件与文本片段传输",
@@ -80,7 +78,7 @@ export default {
     spec4Title: "JWT 短生命周期与轮换",
     spec4Desc: "Access Token 有效期 15 分钟；Refresh Token 单次使用后立即轮换，旧 Token 标记吊销以防重放攻击。",
     spec5Title: "云端零持久化",
-    spec5Desc: "服务端仅保留必需的设备与账户元数据，绝不上报或存储任何剪贴板、文件与消息内容。"
+    spec5Desc: "服务端仅保留必需的设备与账户元数据，绝不上报或存储任何文件与消息内容。"
   },
   download: {
     badge: "下载体验",

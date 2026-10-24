@@ -1,7 +1,7 @@
 export default {
   meta: {
     title: "CoLink • Connect all your devices for seamless collaboration",
-    description: "CoLink is a cross-platform device connectivity tool supporting clipboard sync, fast file transfer, remote terminal & device control, CastBoard status screen, and end-to-end security encryption."
+    description: "CoLink is a cross-platform device connectivity tool supporting fast file transfer, remote terminal & device control, CastBoard status screen, and end-to-end security encryption."
   },
   hero: {
     eyebrow: "CONNECT ALL YOUR DEVICES FOR SEAMLESS COLLABORATION.",
@@ -21,9 +21,7 @@ export default {
   features: {
     badge: "Core Capabilities",
     heading: "Cross-platform seamless collaboration, connecting all your devices",
-    desc: "CoLink is an open-source device connectivity tool. Integrate clipboard sync, file transfer, remote access, and hardware monitoring into a single connection. Collaborate securely and efficiently whether on the same LAN or over the internet.",
-    card1Title: "Seamless Clipboard Sync",
-    card1Desc: "Copy on one device and paste directly on another. Supports plain text, rich text, and images. Automatic background sync with zero manual effort.",
+    desc: "CoLink is an open-source device connectivity tool. Integrate file transfer, remote access, and hardware monitoring into a single connection. Collaborate securely and efficiently whether on the same LAN or over the internet.",
     card2Title: "High-speed LAN Direct P2P",
     card2Desc: "Devices on the same LAN automatically discover via mDNS and establish direct WebSocket P2P connections. Speeds are limited only by physical bandwidth, with no file size limits.",
     card3Title: "File & Text Snippet Transfer",
@@ -80,7 +78,7 @@ export default {
     spec4Title: "Short-Lived JWT & Key Rotation",
     spec4Desc: "Access Token is valid for 15 minutes; Refresh Token rotates immediately after single use, with old tokens revoked against replay attacks.",
     spec5Title: "Zero Server-Side Persistence",
-    spec5Desc: "The server retains only necessary device and account metadata, never reporting or storing any clipboard, file, or message content."
+    spec5Desc: "The server retains only necessary device and account metadata, never reporting or storing any file or message content."
   },
   download: {
     badge: "Download",

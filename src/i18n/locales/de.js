@@ -1,7 +1,7 @@
 export default {
   meta: {
     title: "CoLink • Verbinde alle deine Geräte für nahtlose Zusammenarbeit",
-    description: "CoLink ist ein plattformübergreifendes Gerätetool mit Zwischenablage-Synchronisierung, schnellem Dateitransfer, Remote-Terminal, CastBoard-Statusbildschirm und Ende-zu-Ende-Verschlüsselung."
+    description: "CoLink ist ein plattformübergreifendes Gerätetool mit schnellem Dateitransfer, Remote-Terminal, CastBoard-Statusbildschirm und Ende-zu-Ende-Verschlüsselung."
   },
   hero: {
     eyebrow: "VERBINDE ALLE DEINE GERÄTE FÜR NAHTLOSE ZUSAMMENARBEIT.",
@@ -21,9 +21,7 @@ export default {
   features: {
     badge: "Kernfunktionen",
     heading: "Nahtlose plattformübergreifende Zusammenarbeit für alle deine Geräte",
-    desc: "CoLink ist ein Open-Source-Geräteverbindungstool. Es vereint Zwischenablagesynchronisation, Dateitransfer, Fernzugriff und Hardware-Überwachung in einer einzigen Verbindung.",
-    card1Title: "Nahtlose Zwischenablage-Synchronisation",
-    card1Desc: "Auf einem Gerät kopieren und direkt auf einem anderen einfügen. Unterstützt Klartext, Formattext und Bilder. Automatische Synchronisation im Hintergrund.",
+    desc: "CoLink ist ein Open-Source-Geräteverbindungstool. Es vereint Dateitransfer, Fernzugriff und Hardware-Überwachung in einer einzigen Verbindung.",
     card2Title: "Highspeed-LAN-Direktverbindung (P2P)",
     card2Desc: "Geräte im selben LAN werden über mDNS automatisch erkannt und stellen eine direkte WebSocket P2P-Verbindung her. Geschwindigkeit nur durch Bandbreite begrenzt, keine Dateigrößenbeschränkungen.",
     card3Title: "Datei- & Text-Snippet-Übertragung",
@@ -80,7 +78,7 @@ export default {
     spec4Title: "Kurzlebiges JWT & Schlüsselrotation",
     spec4Desc: "Access Tokens sind 15 Minuten gültig; Refresh Tokens rotieren nach einmaliger Nutzung, alte Tokens werden zur Abwehr von Replay-Angriffen widerrufen.",
     spec5Title: "Null Cloud-Speicherung",
-    spec5Desc: "Der Server speichert nur notwendige Geräte- und Kontometadaten – Zwischenablage-, Datei- und Nachrichteninhalte werden niemals gespeichert."
+    spec5Desc: "Der Server speichert nur notwendige Geräte- und Kontometadaten – Datei- und Nachrichteninhalte werden niemals gespeichert."
   },
   download: {
     badge: "Download",

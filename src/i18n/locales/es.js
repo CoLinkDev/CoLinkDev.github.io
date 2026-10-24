@@ -1,7 +1,7 @@
 export default {
   meta: {
     title: "CoLink • Conecta todos tus dispositivos para una colaboración fluida",
-    description: "CoLink es una herramienta de interconexión entre dispositivos con sincronización de portapapeles, transferencia rápida de archivos, terminal remota, pantalla de estado CastBoard y encriptación de extremo a extremo."
+    description: "CoLink es una herramienta de interconexión entre dispositivos con transferencia rápida de archivos, terminal remota, pantalla de estado CastBoard y encriptación de extremo a extremo."
   },
   hero: {
     eyebrow: "CONECTA TODOS TUS DISPOSITIVOS PARA UNA COLABORACIÓN FLUIDA.",
@@ -21,9 +21,7 @@ export default {
   features: {
     badge: "Capacidades Principales",
     heading: "Colaboración multiplataforma sin interrupciones, conecta todos tus dispositivos",
-    desc: "CoLink es una herramienta de conexión de dispositivos de código abierto. Integra sincronización de portapapeles, transferencia de archivos, acceso remoto y monitoreo en una sola conexión.",
-    card1Title: "Sincronización fluida del portapapeles",
-    card1Desc: "Copia en un dispositivo y pega directamente en otro. Soporta texto plano, texto enriquecido e imágenes. Sincronización automática en segundo plano.",
+    desc: "CoLink es una herramienta de conexión de dispositivos de código abierto. Integra transferencia de archivos, acceso remoto y monitoreo en una sola conexión.",
     card2Title: "Conexión directa P2P en red local",
     card2Desc: "Los dispositivos en la misma LAN se descubren automáticamente vía mDNS y establecen conexión directa P2P por WebSocket. Velocidad limitada solo por tu ancho de banda.",
     card3Title: "Transferencia de archivos y notas",
@@ -80,7 +78,7 @@ export default {
     spec4Title: "JWT de corta duración y rotación de claves",
     spec4Desc: "El Token de Acceso es válido por 15 minutos; el Token de Refresco se rota tras un único uso y los antiguos se revocan.",
     spec5Title: "Cero persistencia en la nube",
-    spec5Desc: "El servidor solo conserva los metadatos necesarios de dispositivos y cuentas; nunca guarda ni reporta contenidos de portapapeles, archivos o mensajes."
+    spec5Desc: "El servidor solo conserva los metadatos necesarios de dispositivos y cuentas; nunca guarda ni reporta contenidos de archivos o mensajes."
   },
   download: {
     badge: "Descargas",
